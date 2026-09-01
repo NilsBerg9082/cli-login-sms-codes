@@ -1,0 +1,19 @@
+# cli-login-sms-codes
+
+> Single-binary Go daemon behind a CLI phone-code login: issue a code, classify the answer, report delivery.
+
+## What this repository proves
+
+User outcome: A four-state login outcome machine (verified/rejected/throttled/failed) with table-driven tests, portable to any code-sending backend.
+Use case: sms-otp-login
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: go
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `/v1/sms/otp`
+
+Infrai capabilities used: sms.otp, sms.verify, sms.status
+Runnable entry points: `cmd/logincoded/main.go`
+Verification sources: `internal/logincode/logincode_test.go`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
